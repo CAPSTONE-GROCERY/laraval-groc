@@ -13,8 +13,12 @@ class CreateStoreDepartmentsTable extends Migration
     public function up()
     {
         Schema::create('store_departments', function (Blueprint $table) {
-            $table->increments('store_id');
-            $table->increments('department_id');
+            $table->increments('store_departments_id');
+            $table->integer('store_id');
+            $table->integer('department_id');
+
+            $table->foreign('store_id')->references('store_id')->on('stores')->onDelete('cascade');
+            $table->foreign('department_id')->references('department_id')->on('departments')->onDelete('cascade');
         });
     }
 

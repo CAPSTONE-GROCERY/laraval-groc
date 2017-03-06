@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('user_id');
             $table->string('FirstName');
             $table->string('LastName');
             $table->string('email')->unique();
@@ -25,9 +25,6 @@ class CreateUsersTable extends Migration
             $table->integer('modified_by')->nullable();
             $table->rememberToken();
             $table->timestamps();
-
-            $table->foreign('created_by')->references('id')->on('users');
-            $table->foreign('modified_by')->references('id')->on('users');
         });
     }
 

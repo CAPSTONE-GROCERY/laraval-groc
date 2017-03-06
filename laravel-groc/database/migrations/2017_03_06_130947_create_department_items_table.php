@@ -13,8 +13,12 @@ class CreateDepartmentItemsTable extends Migration
     public function up()
     {
         Schema::create('department_items', function (Blueprint $table) {
-            $table->increments('department_id');
-            $table->increments('item_id');
+            $table->increments('department_items_id');
+            $table->integer('department_id')->unsigned()->index();
+            $table->integer('item_id')->unsigned()->index();
+
+            $table->foreign('department_id')->references('department_id')->on('departments')->onDelete('cascade');
+            $table->foreign('item_id')->references('item_id')->on('items')->onDelete('cascade');
         });
     }
 
