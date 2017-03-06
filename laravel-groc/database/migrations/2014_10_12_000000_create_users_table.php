@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password',24);
             $table->boolean('isActive');
+            $table->integer('demerates');
             $table->string('PhoneNumber'); // pattern match later
             $table->integer('created_by')->nullable();
             $table->integer('modified_by')->nullable();
