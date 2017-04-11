@@ -23,4 +23,5 @@
         <p>NO RESULTS FOUND.</p>
     @endif
     <hr />
+    <h1><a href="{{ url('/cart') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></h1>
 @stop
