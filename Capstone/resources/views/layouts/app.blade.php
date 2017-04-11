@@ -19,9 +19,52 @@
         body {
             font-family: 'Lato';
         }
+        .contentLocation{
+            padding: 10px;
+        }
+
+        .btn-link{
+            color: black;
+        }
 
         .fa-btn {
             margin-right: 6px;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        th  {
+            padding-left: 2px;
+            padding-right: 2px;
+            background-color: darkslategray;
+            border: 1px solid darkslategray;
+            color: white;
+            text-align: center;
+        }
+
+        td{
+            padding-left: 2px;
+            padding-right: 2px;
+            border-left: 1px solid darkslategray;
+            border-right: 1px solid darkslategray;
+        }
+
+        tr:nth-child(odd) {  background-color: lightslategray;  }
+
+        .Alert{
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .Alert--error{
+            background: Red;
+            color: white;
+        }
+        .Alert--success{
+            background: Green;
+            color: white;
         }
     </style>
 </head>

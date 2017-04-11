@@ -15,10 +15,10 @@ class CreateDepartmentItemsTable extends Migration
         Schema::create('department_items', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('department_id')->unsigned()->index();
-            $table->integer('item_id')->unsigned()->index();
+            $table->integer('product_id')->unsigned()->index();
 
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

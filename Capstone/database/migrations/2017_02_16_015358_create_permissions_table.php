@@ -16,8 +16,9 @@ class CreatePermissionsTable extends Migration
         {
             $table->increments('id');
             $table->integer('name');
+            $table->integer('store_id')->unsigned()->index();
 
-            $table->foreign('store_id') -> references('id')->on('stores');
+            $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
         });
     }
 
