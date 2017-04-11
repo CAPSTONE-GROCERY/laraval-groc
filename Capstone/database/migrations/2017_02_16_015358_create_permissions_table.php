@@ -16,6 +16,8 @@ class CreatePermissionsTable extends Migration
         {
             $table->increments('id');
             $table->integer('name');
+
+            $table->foreign('store_id') -> references('id')->on('stores');
         });
     }
 

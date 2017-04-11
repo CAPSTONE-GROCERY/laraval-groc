@@ -20,7 +20,7 @@ class CreateItemsTable extends Migration
             $table->boolean('isAvailable');
             $table->string('description');
 
-            $table->foreign('id') -> references('id')->on('department_items');
+            $table->foreign('department_id') -> references('id')->on('department_items');
 
 
         });
