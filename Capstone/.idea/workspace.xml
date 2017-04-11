@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2e4eecf-3802-4b2b-96e2-20cdca302804" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Department.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Store.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Capstone.iml" afterPath="$PROJECT_DIR$/.idea/Capstone.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Product.php" afterPath="$PROJECT_DIR$/app/Product.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/productsTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/productsTableSeeder.php" />
     </list>
     <ignored path="Capstone.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/database/seeds/productsTableSeeder.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="445">
-              <caret line="100" column="1" selection-start-line="3" selection-start-column="0" selection-end-line="100" selection-end-column="1" />
+              <caret line="100" column="1" selection-start-line="100" selection-start-column="1" selection-end-line="100" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -58,11 +52,9 @@
       <file leaf-file-name="DatabaseSeeder.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="185" column="34" selection-start-line="185" selection-start-column="34" selection-end-line="185" selection-end-column="34" />
-              <folding>
-                <element signature="e#7#21#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="2406">
+              <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -597,7 +589,7 @@
       <workItem from="1491916049054" duration="8350000" />
       <workItem from="1491930137351" duration="149000" />
       <workItem from="1491932753389" duration="26000" />
-      <workItem from="1491933099403" duration="2357000" />
+      <workItem from="1491933099403" duration="2427000" />
     </task>
     <task id="LOCAL-00001" summary="Updated Login and minor improvements">
       <created>1491921436883</created>
@@ -620,11 +612,18 @@
       <option name="project" value="LOCAL" />
       <updated>1491925770921</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Seeders merged into one file">
+      <created>1491954832401</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1491954832401</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13864000" />
+    <option name="totallyTimeSpent" value="13934000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="28" width="1922" height="1019" extended-state="6" />
@@ -666,7 +665,8 @@
     <MESSAGE value="Updated Login and minor improvements" />
     <MESSAGE value="Minor improvements" />
     <MESSAGE value="Show products" />
-    <option name="LAST_COMMIT_MESSAGE" value="Show products" />
+    <MESSAGE value="Seeders merged into one file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Seeders merged into one file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1015,7 +1015,7 @@
     <entry file="file://$PROJECT_DIR$/database/seeds/productsTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
-          <caret line="100" column="1" selection-start-line="3" selection-start-column="0" selection-end-line="100" selection-end-column="1" />
+          <caret line="100" column="1" selection-start-line="100" selection-start-column="1" selection-end-line="100" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -1038,11 +1038,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="185" column="34" selection-start-line="185" selection-start-column="34" selection-end-line="185" selection-end-column="34" />
-          <folding>
-            <element signature="e#7#21#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="2406">
+          <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
