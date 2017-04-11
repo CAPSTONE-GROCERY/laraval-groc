@@ -8,7 +8,18 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    Your Application's Landing Page.
+                    <h1>The eShopper 9000</h1>
+                    <h3>About:</h3>
+                    <p>This application is created and maintaind by Gordan and Co. It is designed to make the grocery shopping experience
+                        much more convenient.</p>
+                    <p>On the 'Products' page you will find a list of groceries from which you can add to your shoping cart. When you are
+                        done your shopping, you simply checkout and await the confirmation message that your order is ready to be picked
+                        up.</p>
+                    <p>Thank you for choosing the eShopper 9000!</p>
+                    <h3>About Us:</h3>
+                    <p>Gordan and Co. is a software development solutions company. Formed by four students while still in school, we
+                        cater to anyone in need of business software development and websites to maximize productivity and profitability.
+                        Please visit us at http://www.gordanandco.com</p>
                 </div>
             </div>
         </div>
