@@ -108,13 +108,27 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Select Store <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                @foreach($stores as $store)
+                                    <li><a href="{{ url('/products') }}">"{{$store->name}}"</a></li>
+                                @endforeach
+                                <li><a href="{{ url('/products') }}">Superstore</a></li>
+                                <li><a href="{{ url('/products') }}">Bestbuy</a></li>
+                                <li><a href="{{ url('/products') }}">Dollar Store</a></li>
+                            </ul>
+
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->FirstName }} {{ Auth::user()->LastName }} <span class="caret"></span>
                             </a>
-
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/cart') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
                             </ul>
+
                         </li>
                     @endif
                 </ul>
