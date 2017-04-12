@@ -172,7 +172,7 @@ class ProductsTableSeeder extends Seeder
 
         Product::create([
             'name' => 'product7',
-            'quantity' => '666',
+            'quantity' => '662',
             'price' => '6.66',
             'isAvailable' => 'true',
             'description' => 'product 7 description',

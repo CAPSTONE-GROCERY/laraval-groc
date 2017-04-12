@@ -39,7 +39,6 @@ hr{
 #right-side{
     float: left;
     overflow: auto;
-    text-align: center;
     background-color: lightgray;
     border-top: 2px solid gray;
     border-right: 2px solid gray;
@@ -48,8 +47,12 @@ hr{
 }
 
 #product{
-    margin-top: 15%;
-}
+    margin-top: 2%;
+    margin-left: 2%;
+}#product p{
+     margin-bottom: 4%;
+ }
+
 #search{
     border: solid gray;
     box-shadow: inset 0 0 10px #000000;
