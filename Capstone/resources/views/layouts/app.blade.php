@@ -10,11 +10,11 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
-
+    <link rel="stylesheet" href="<?php echo asset('css/styles.css')?>" type="text/css">
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <script   src="https://code.jquery.com/jquery-3.2.1.js"   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
 
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
@@ -82,13 +82,43 @@
         quantity = currentProduct.quantity;
 
         function clickProduct(currentProduct){
-            $('#list').html("");
-            $('#list').html("<p>" + currentProduct.name + "</p>" +
-                    "<p>" + currentProduct.price + "</p>" +
-                    "<p>" + currentProduct.quantity + "</p>" +
-                    "<p>" + currentProduct.description + "</p>" +
+            var ul = document.getElementById("list");
+            var items = ul.getElementsByTagName("li");
+            for (var i = 0; i < items.length; i++) {
+                if(items[i].innerText == currentProduct.name && i == items[i].value){
+                    items[i].classList.add("active");
+                }
+                else {
+                    items[i].classList.remove("active");
+                }
+            }
+
+            $('#product').html("");
+            $('#product').html("<p>Product: " + currentProduct.name + "</p>" +
+                    "<p>$" + currentProduct.price + "</p>" +
+                    "<p>In Stock: " + currentProduct.quantity + "</p>" +
+                    "<p>Description: " + currentProduct.description + "</p>" +
                     "<a href='#'>Add to Cart:  </a>" +
                     "<input type='text' style='width: 25px;'> </input>");
+        }
+
+        function filter() {
+            // Declare variables
+            var input, filter, item, ul, li, i;
+            input = document.getElementById('search');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("list");
+            li = ul.getElementsByTagName('li');
+
+            // Loop through all list items, and hide those who don't match the search query
+            for (i = 0; i < li.length; i++) {
+                item = li[i];
+                if (item.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
         }
     </script>
 

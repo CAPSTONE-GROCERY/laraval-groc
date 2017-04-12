@@ -1,4 +1,4 @@
-<?php
+8000<?php
 
 use App\Store;
 use App\Product;
@@ -214,7 +214,26 @@ class ProductsTableSeeder extends Seeder
              //$this->timestamps = false
         ]);
 
+        Product::create([
+            'name' => 'product11',
+            'quantity' => '76',
+            'price' => '23.99',
+            'isAvailable' => 'true',
+            'description' => 'product 11 description',
+            'department_id' => 2,
+            'store_id' => 1,
+            //$this->timestamps = false
+        ]);
 
-
+        Product::create([
+            'name' => 'product12',
+            'quantity' => '23',
+            'price' => '45.99',
+            'isAvailable' => 'true',
+            'description' => 'product 12 description',
+            'department_id' => 2,
+            'store_id' => 1,
+            //$this->timestamps = false
+        ]);
     }
 }
