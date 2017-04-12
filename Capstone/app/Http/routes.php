@@ -10,6 +10,16 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use App\Store;
+
+View::composer('*', function($view)
+{
+    $stores = Store::all();
+    $view->with('stores', $stores);
+});
+Route::get('*', function () {
+    $stores = Store::all();
+});
 
 Route::get('/', function () {
     return view('welcome');

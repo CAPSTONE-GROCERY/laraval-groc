@@ -10,4 +10,14 @@ class Product extends Model
     protected $fillable = [
         'name', 'price', 'quantity', 'description'
     ];
+
+    public function Department()
+    {
+        return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    public function Store()
+    {
+        return $this->belongsTo(Store::class, 'store_id');
+    }
 }

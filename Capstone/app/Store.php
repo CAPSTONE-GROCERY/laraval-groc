@@ -9,4 +9,9 @@ class Store extends Model
     protected $fillable = [
         'id'. 'name', 'address', 'PhoneNumber', 'isActive', 'created_by', 'modified_by'
     ];
+
+    public function Departments()
+    {
+        return $this->hasMany(Department::class);
+    }
 }

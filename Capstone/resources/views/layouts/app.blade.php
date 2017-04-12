@@ -112,11 +112,8 @@
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 @foreach($stores as $store)
-                                    <li><a href="{{ url('/products') }}">"{{$store->name}}"</a></li>
+                                    <li><a href="{{ url('/products?store=' . $store->name) }}">{{$store->name}}</a></li>
                                 @endforeach
-                                <li><a href="{{ url('/products') }}">Superstore</a></li>
-                                <li><a href="{{ url('/products') }}">Bestbuy</a></li>
-                                <li><a href="{{ url('/products') }}">Dollar Store</a></li>
                             </ul>
 
                         </li>

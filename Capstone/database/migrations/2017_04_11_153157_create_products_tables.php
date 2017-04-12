@@ -20,8 +20,10 @@ class CreateProductsTables extends Migration
             $table->boolean('isAvailable');
             $table->string('description');
             $table->integer('department_id')->unsigned()->index();
+            $table->integer('store_id')->unsigned()->index();
 
             $table->foreign('department_id') -> references('id')->on('department_items');
+            $table->foreign('store_id') -> references('id')->on('stores');
 
 
         });
