@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_token" content="{{ csrf_token() }}">
 
     <title>E-Shopper 9000</title>
 
@@ -93,14 +94,16 @@
                     items[i].classList.remove("active");
                 }
             }
-            $('#product').html("<form class='form-horizontal' method='post' action='/cart/add'>" +
-                    "<p>Department: " + currentProduct.department.name + "</p>" +
-                    "<p>Product: " + currentProduct.name + "</p>" +
+            $('#product').html("<p>Department: " + currentProduct.department.name + "</p>" +
+                    "<input type='hidden' name='name' value='"+currentProduct.name+"'> </input>"+
+                    "<input type='hidden' name='price' value='"+currentProduct.price+"'> </input>"+
+                    "<input type='hidden' name='description' value='"+currentProduct.description+"'> </input>"+
+                    "<p >Product: " + currentProduct.name + "</p>" +
                     "<p>Price: $" + currentProduct.price + "</p>" +
                     "<p>In Stock: " + currentProduct.quantity + "</p>" +
                     "<p>Description: " + currentProduct.description + "</p>" +
-                    "<p>Quantity:  " + "<input type='text' style='width: 25px;'> </input> </p>" +
-                    "<button class='btn btn-success' onclick='addToCart();'> Add to Cart");
+                    "<p>Quantity:  " + "<input type='text' name='quantity' style='width: 50px;' pattern='^([1-9]|[1][0-9]|[2][0])$' title='item quantity(1-20)'> </input> </p>" +
+                    "<button class='btn btn-success' onclick='addToCart();'> Add to Cart</button>");
         }
 
         function addToCart(){

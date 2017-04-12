@@ -42,7 +42,10 @@
             <div id="right-side">
                 <div id="loader" class="loader" style="display: none;"></div>
                 <div id = "displayProducts">
-                    <div id="product" ></div>
+                    <form id='product-form' method='post' action='/cart/store'>
+                        {{ csrf_field() }}
+                        <div id="product" ></div>
+                    </form>
                 </div>
             </div>
         </div>
