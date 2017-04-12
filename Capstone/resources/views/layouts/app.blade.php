@@ -10,10 +10,11 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
-    <link rel="stylesheet" href="<?php echo asset('css/styles.css')?>" type="text/css">
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 
+    <link rel="stylesheet" href="<?php echo asset('css/styles.css')?>" type="text/css">
     <script src="https://code.jquery.com/jquery-3.2.1.js"   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
 
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
@@ -79,9 +80,9 @@
         var currentProduct;
         var quantity = 0;
         var Available = "Add to Cart";
-        quantity = currentProduct.quantity;
 
         function clickProduct(currentProduct){
+            quantity = currentProduct.quantity;
             var ul = document.getElementById("list");
             var items = ul.getElementsByTagName("li");
             for (var i = 0; i < items.length; i++) {
@@ -98,8 +99,12 @@
                     "<p>$" + currentProduct.price + "</p>" +
                     "<p>In Stock: " + currentProduct.quantity + "</p>" +
                     "<p>Description: " + currentProduct.description + "</p>" +
-                    "<a href='#'>Add to Cart:  </a>" +
-                    "<input type='text' style='width: 25px;'> </input>");
+                    "<p>Quantity:  " + "<input type='text' style='width: 25px;'> </input> </p>" +
+                    "<button class='btn btn-success' onclick='addToCart();'> Add to Cart");
+        }
+
+        function addToCart(){
+
         }
 
         function filter() {

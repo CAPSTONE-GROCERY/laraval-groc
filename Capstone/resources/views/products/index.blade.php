@@ -5,7 +5,6 @@
 
     <div class="container">
         <h1>{{$currentStoreName}} Products</h1>
-        <hr />
 
 
         <div id="sides">
@@ -16,7 +15,7 @@
                         <!--{{ $index = 0 }} -->
                         @foreach($products as $product)
                             @if($product->Store->name == $currentStoreName)
-                                <li value="{{ $index }}" class='beer-type' onclick="clickProduct({{$product}});"> {{ $product->name }} </li>
+                                <li value="{{ $index }}" class='product-type' onclick="clickProduct({{$product}});"> {{ $product->name }} </li>
                                 <!--{{ $index++ }} -->
                             @endif
                         @endforeach
