@@ -23,6 +23,7 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::with('Department', 'Store')->get();
-        return view('products.index', compact('products'));
+        $departments = Department::all();
+        return view('products.index', compact('products', 'departments'));
     }
 }

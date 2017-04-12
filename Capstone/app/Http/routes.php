@@ -32,3 +32,5 @@ Route::get('/home', 'HomeController@index');
 Route::get('/cart', 'CartController@index');
 
 Route::get('/products', 'ProductsController@index');
+
+Route::post('/cart/store', 'CartController@store');

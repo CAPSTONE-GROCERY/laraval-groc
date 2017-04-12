@@ -93,10 +93,10 @@
                     items[i].classList.remove("active");
                 }
             }
-
-            $('#product').html("");
-            $('#product').html("<p>Product: " + currentProduct.name + "</p>" +
-                    "<p>$" + currentProduct.price + "</p>" +
+            $('#product').html("<form class='form-horizontal' method='post' action='/cart/add'>" +
+                    "<p>Department: " + currentProduct.department.name + "</p>" +
+                    "<p>Product: " + currentProduct.name + "</p>" +
+                    "<p>Price: $" + currentProduct.price + "</p>" +
                     "<p>In Stock: " + currentProduct.quantity + "</p>" +
                     "<p>Description: " + currentProduct.description + "</p>" +
                     "<p>Quantity:  " + "<input type='text' style='width: 25px;'> </input> </p>" +
@@ -162,12 +162,20 @@
                     <li><a href="{{ url('/register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            Select Store <span class="caret"></span>
-                        </a>
+                        @if(!isset($_GET['store']))
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Select Store <span class="caret"></span>
+                            </a>
+                        @else
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{$_GET['store']}} <span class="caret"></span>
+                            </a>
+                        @endif
                         <ul class="dropdown-menu" role="menu">
                             @foreach($stores as $store)
-                                <li><a href="{{ url('/products?store=' . $store->name) }}">{{$store->name}}</a></li>
+                                @if(!isset($_GET['store']) || $_GET['store'] != $store->name)
+                                    <li><a href="{{ url('/products?store=' . $store->name) }}">{{$store->name}}</a></li>
+                                @endif
                             @endforeach
                         </ul>
 

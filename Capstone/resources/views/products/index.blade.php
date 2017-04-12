@@ -1,12 +1,29 @@
 @extends('layouts.app')
 @if(isset($_GET['store']))
     <!--{{ $currentStoreName = $_GET['store'] }} -->
+    <!--{{ $currentDepartmentName = 'Any' }} -->
+    @if(isset($_GET['department']))
+        <!--{{ $currentDepartmentName = $_GET['department'] }} -->
+    @endif
+
 @section('content')
 
     <div class="container">
         <h1>{{$currentStoreName}} Products</h1>
-
-
+        <p>
+            Specify the department:
+            <select onChange="window.location.href=this.value">
+                <option value="{{ url('/products?store=' . $currentStoreName . '&department=Any') }}">{{$currentDepartmentName}}</option>
+                @if($currentDepartmentName != 'Any')
+                    <option value="{{ url('/products?store=' . $currentStoreName . '&department=Any') }}">Any</option>
+                @endif
+                @foreach($departments as $department)
+                    @if($currentDepartmentName != $department->name))
+                        <option value="{{ url('/products?store=' . $currentStoreName . '&department='. $department->name) }}">{{$department->name}}</option>
+                    @endif
+                @endforeach
+            </select>
+        </p>
         <div id="sides">
             <div id="left-side">
                 <input id="search" type="text" onkeyup="filter()" placeholder="Search for product..."/>
@@ -14,7 +31,7 @@
                     <ul id="list">
                         <!--{{ $index = 0 }} -->
                         @foreach($products as $product)
-                            @if($product->Store->name == $currentStoreName)
+                            @if($product->Store->name == $currentStoreName && ($product->Department->name == $currentDepartmentName || $currentDepartmentName == 'Any'))
                                 <li value="{{ $index }}" class='product-type' onclick="clickProduct({{$product}});"> {{ $product->name }} </li>
                                 <!--{{ $index++ }} -->
                             @endif
@@ -61,18 +78,27 @@
 @else
 @section('content')
     <div class="container">
-        <h1>Product's Page</h1>
-        <hr />
-        <h3>No store currently selected</h3>
-        <p>
-            Select a store to choose products from:
-            <select onChange="window.location.href=this.value">
-                <option value="#">Select a store</option>
-                @foreach($stores as $store)
-                    <option value="{{ url('/products?store=' . $store->name) }}">{{$store->name}}</option>
-                @endforeach
-            </select>
-        </p>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Products Page
+                    </div>
+                    <div class="panel-body">
+                        <p>No store currently selected</p>
+                        <p>
+                            Select a store to choose products from:
+                            <select onChange="window.location.href=this.value">
+                                <option value="#">Select a store</option>
+                                @foreach($stores as $store)
+                                    <option value="{{ url('/products?store=' . $store->name) }}">{{$store->name}}</option>
+                                @endforeach
+                            </select>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 @endif
