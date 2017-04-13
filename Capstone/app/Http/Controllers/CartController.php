@@ -21,14 +21,30 @@ class CartController extends Controller
      */
     public function index()
     {
-        $cart = Cart::instance('shopping')->content();
-        return view('cart', array('cart' => $cart, 'title' => 'Welcome', 'description' => '', 'page' => 'home'));
+        if(isset($_GET['store']))
+            $currentStoreName = $_GET['store'];
+        else
+            $currentStoreName = 'cart';
+
+        $cart = Cart::instance(\Auth::user()->email . "'s" . $currentStoreName)->content();
+        return view('carts.index', array('cart' => $cart, 'title' => 'Welcome', 'description' => '', 'page' => 'home'));
     }
 
     public function store(Request $request) //adds to a cart
     {
         $product = new Product($request->all());
-        Cart::instance('shopping')->add($product->description, $product->name, $product->quantity, $product->price);
-        return $product;
+        Cart::instance(\Auth::user()->email . "'s" . $request->store)->add($product->description, $product->name, $product->quantity, $product->price);
+        return redirect()->back();
+    }
+
+    public function remove($item_id)
+    {
+        if(isset($_GET['store']))
+            $currentStoreName = $_GET['store'];
+        else
+            $currentStoreName = 'cart';
+
+        Cart::instance(\Auth::user()->email . "'s" . $currentStoreName)->remove($item_id);
+        return back();
     }
 }

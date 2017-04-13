@@ -42,7 +42,7 @@
             <div id="right-side">
                 <div id="loader" class="loader" style="display: none;"></div>
                 <div id = "displayProducts">
-                    <form id='product-form' method='post' action='/cart/store'>
+                    <form id='product-form' method='post' action=''>
                         {{ csrf_field() }}
                         <div id="product" ></div>
                     </form>
@@ -75,7 +75,7 @@
             <p>NO RESULTS FOUND.</p>
         @endif
         <hr />
-        <h1><a href="{{ url('/cart') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></h1>
+        <h1><a href="{{ url('/cart?store='. $currentStoreName) }}"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></h1>
     </div>
 @endsection
 @else

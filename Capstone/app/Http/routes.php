@@ -34,3 +34,4 @@ Route::get('/cart', 'CartController@index');
 Route::get('/products', 'ProductsController@index');
 
 Route::post('/cart/store', 'CartController@store');
+Route::post('cart/remove/{item_id}', 'CartController@remove')->name('cart.remove');

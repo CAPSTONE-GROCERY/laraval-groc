@@ -98,18 +98,32 @@
                     "<input type='hidden' name='name' value='"+currentProduct.name+"'> </input>"+
                     "<input type='hidden' name='price' value='"+currentProduct.price+"'> </input>"+
                     "<input type='hidden' name='description' value='"+currentProduct.description+"'> </input>"+
+                    "<input type='hidden' name='store' value='"+currentProduct.store.name+"'> </input>"+
                     "<p >Product: " + currentProduct.name + "</p>" +
                     "<p>Price: $" + currentProduct.price + "</p>" +
                     "<p>In Stock: " + currentProduct.quantity + "</p>" +
                     "<p>Description: " + currentProduct.description + "</p>" +
-                    "<p>Quantity:  " + "<input type='text' name='quantity' style='width: 50px;' pattern='^([1-9]|[1][0-9]|[2][0])$' title='item quantity(1-20)'> </input> </p>" +
+                    "<p>Quantity:  " + "<input type='text' name='quantity' style='width: 50px;' pattern='^([1-9]|[1][0-9]|[2][0])$' title='item quantity(1-20)' required> </input> (1-20) </p>" +
                     "<button class='btn btn-success' onclick='addToCart();'> Add to Cart</button>");
         }
 
         function addToCart(){
-
+            $('#product-form').unbind().submit(function( event ) {
+                event.preventDefault();
+                $.ajax({
+                    url: '/cart/store',
+                    type: 'post',
+                    data: $('#product-form').serialize(), // Remember that you need to have your csrf token included
+                    dataType: 'json',
+                    success: function( _response ){
+                        alert("Item(s) added to cart.");
+                    },
+                    error: function( _response ){
+                        alert("Item(s) added to cart.");
+                    }
+                });
+            });
         }
-
         function filter() {
             // Declare variables
             var input, filter, item, ul, li, i;
@@ -134,6 +148,12 @@
 <body id="app-layout">
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
+        @if(isset($_GET['store']))
+            <!--{{ $currentStoreName = '?store=' . $_GET['store'] }} -->
+        @else
+            <!--{{ $currentStoreName = '' }} -->
+        @endif
+
         <div class="navbar-header">
 
             <!-- Collapsed Hamburger -->
@@ -145,16 +165,15 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ url('/'.$currentStoreName) }}">
                 E-Shopper 9000
             </a>
         </div>
-
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li><a href="{{ url('/home') }}">Home</a></li>
-                <li><a href="{{ url('/products') }}">Products</a></li>
+                <li><a href="{{ url('/home'.$currentStoreName) }}">Home</a></li>
+                <li><a href="{{ url('/products'.$currentStoreName) }}">Products</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -175,9 +194,10 @@
                             </a>
                         @endif
                         <ul class="dropdown-menu" role="menu">
+                            <!--{{$url=strtok($_SERVER["REQUEST_URI"],'?')}}-->
                             @foreach($stores as $store)
                                 @if(!isset($_GET['store']) || $_GET['store'] != $store->name)
-                                    <li><a href="{{ url('/products?store=' . $store->name) }}">{{$store->name}}</a></li>
+                                    <li><a href="{{ url($url.'?store=' . $store->name) }}">{{$store->name}}</a></li>
                                 @endif
                             @endforeach
                         </ul>
@@ -188,7 +208,7 @@
                             {{ Auth::user()->FirstName }} {{ Auth::user()->LastName }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url('/cart') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                            <li><a href="{{ url('/cart'.$currentStoreName) }}"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
                         </ul>
 
